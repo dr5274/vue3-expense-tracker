@@ -1,3 +1,18 @@
+<script setup>
+const props = defineProps({
+  transactions: {
+    type: Array,
+    required: true,
+  },
+});
+
+const emit = defineEmits(['deleteTransaction']);
+
+const deleteTransaction = (id) => {
+  emit('deleteTransaction', id);
+};
+</script>
+
 <template>
   <h3>History</h3>
   <ul id="list" class="list">
@@ -13,20 +28,3 @@
     </li>
   </ul>
 </template>
-
-<script setup>
-import { defineProps } from 'vue';
-
-const props = defineProps({
-  transactions: {
-    type: Array,
-    required: true,
-  },
-});
-
-const emit = defineEmits(['transactionDeleted']);
-
-const deleteTransaction = (id) => {
-  emit('transactionDeleted', id);
-};
-</script>
